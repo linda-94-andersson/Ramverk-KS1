@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import SubmitButton from "./SubmitButton";
 
 function InputForm(props) {
-
   const [inputValue, setInputValue] = useState("");
 
   function changeValue(e) {
@@ -13,7 +12,7 @@ function InputForm(props) {
     e.preventDefault();
     const logValue = inputValue;
     setInputValue("");
-    props.onSubmit(logValue); 
+    props.onSubmit(logValue);
   }
 
   return (
