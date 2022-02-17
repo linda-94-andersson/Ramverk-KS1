@@ -35,8 +35,8 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Time add the things you need to do!</h1>
+    <div className="main-div">
+      <h1>Time to add all the things you need to do!</h1>
       <InputForm onSubmit={handleListItem} />
       <AppenedList
         itemList={listItems}

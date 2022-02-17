@@ -9,12 +9,14 @@ function AppenedList(props) {
           return (
             <li key={item.key} className={item.completed ? "stroken" : ""}>
               {item.name}
-              <button value={item.key} onClick={props.checkedItem}>
-                <AiOutlineCheckSquare />
-              </button>
-              <button value={item.key} onClick={props.removeItem}>
-                <AiOutlineCloseSquare />
-              </button>
+              <div className="list-div">
+                  <button value={item.key} onClick={props.checkedItem}>
+                    <AiOutlineCheckSquare />
+                  </button>
+                  <button value={item.key} onClick={props.removeItem}>
+                    <AiOutlineCloseSquare />
+                  </button>
+              </div>
             </li>
           );
         })}
