@@ -37,12 +37,14 @@ function App() {
   return (
     <div className="main-div">
       <h1>Time to add all the things you need to do!</h1>
-      <InputForm onSubmit={handleListItem} />
-      <AppenedList
-        itemList={listItems}
-        removeItem={closeButton}
-        checkedItem={checkButton}
-      />
+      <section>
+        <InputForm onSubmit={handleListItem} />
+        <AppenedList
+          itemList={listItems}
+          removeItem={closeButton}
+          checkedItem={checkButton}
+        />
+      </section>
     </div>
   );
 }
