@@ -17,7 +17,14 @@ function InputForm(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input value={inputValue} onChange={changeValue} type="text" />
+      <input
+        value={inputValue}
+        onChange={changeValue}
+        type="text"
+        autocomplete="off"
+        placeholder="Add New Task"
+        class="task-input"
+      />
       <SubmitButton />
     </form>
   );

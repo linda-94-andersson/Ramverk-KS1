@@ -1,0 +1,131 @@
+* {
+  margin: 0 auto;
+  padding-inline-start: 0;
+  box-sizing: border-box;
+  font-family: "Indie Flower", cursive;
+}
+
+:root {
+  --add-button: rgba(255, 255, 255, 0.7);
+  --add-button-shadow: rgba(238, 156, 167, 0.4);
+}
+
+body {
+  background-color: #dfdfdf;
+  display: flex;
+}
+
+h1 {
+  padding-bottom: 0.5em;
+  color: #272727;
+  margin-left: 0.25em;
+  text-transform: uppercase;
+}
+
+input {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 0 5px;
+  outline: none;
+  margin-right: 15px;
+  color: #272727;
+  box-shadow: none;
+  border-color: #272727;
+}
+
+input::placeholder {
+  color: #272727;
+}
+
+section {
+  width: 76.7vw;
+}
+
+form {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  color: #272727;
+  list-style-type: none;
+  font-size: 1.5rem;
+  margin: 0.5em 0;
+  border-bottom: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.main-div {
+  margin-top: 3em;
+  padding: 2em 2em 5em 2em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  overflow: auto;
+  color: #222;
+}
+
+.add-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.submit-button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--add-button);
+  color: #272727;
+  background-image: url(../assets/circle.png);
+  background-size: 58px;
+  background-position: right 50% bottom 35%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 12px 0 var(--add-button-shadow);
+}
+
+.list-div {
+  height: 1em;
+  margin: 0;
+}
+
+.list-div button {
+  background-color: #ffffff00;
+  border: none;
+  font-size: 2rem;
+}
+
+.checked:hover {
+  fill: #00cf1c;
+  cursor: pointer;
+}
+
+.close:hover {
+  fill: red;
+  cursor: pointer;
+}
+
+.stroken {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
