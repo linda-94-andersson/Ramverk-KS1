@@ -1,20 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputForm from "./components/InputForm";
 import AppenedList from "./components/AppenedList";
 import { v4 as uuidv4 } from "uuid";
 import "./style.css";
+import { getTodos } from "./actions/getTodos";
+import { getTodo } from "./actions/getTodo";
+import { deleteTodo } from "./actions/deleteTodo";
+import { patchTodo } from "./actions/patchTodo";
+import { putTodo } from "./actions/putTodo";
+import { postTodo } from "./actions/postTodo";
+// import { getTodos } from "./actions/actions";
 
 function App() {
   const [listItems, setListItems] = useState([]);
+
+  getTodos();
+
+  getTodo();
+  
+  putTodo();
+  
+  postTodo();
+  
+  patchTodo();
+  
+  // useEffect(() => {
+  //   getTodos();
+  // }, []);
 
   function handleListItem(valueInput) {
     if (!valueInput) return;
     listItems.push({
       name: valueInput,
       completed: false,
-      key: uuidv4(),
+      id: uuidv4(),
     });
     setListItems([...listItems]);
+    console.log(listItems);
   }
 
   function closeButton(e) {
@@ -23,12 +45,13 @@ function App() {
       return items.key === key;
     });
     listItems.splice(index, 1);
+    deleteTodo();
     setListItems([...listItems]);
   }
 
   function checkButton(e) {
     // setListItems(
-    //   [...listItems].map((t) => 
+    //   [...listItems].map((t) =>
     //     t.id !== listItems.id ? t : { ...t, completed: !t.completed }
     //   )
     // );
