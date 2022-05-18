@@ -21,9 +21,9 @@ function InputForm(props) {
         value={inputValue}
         onChange={changeValue}
         type="text"
-        autocomplete="off"
+        autoComplete="off"
         placeholder="Add New Task"
-        class="task-input"
+        className="task-input"
       />
       <SubmitButton />
     </form>
