@@ -94,7 +94,7 @@ li {
   border: 0;
   background: var(--add-button);
   color: #272727;
-  background-image: url(../assets/circle.png);
+  background-image: url(./assets/circle.png);
   background-size: 58px;
   background-position: right 50% bottom 35%;
   background-repeat: no-repeat;
