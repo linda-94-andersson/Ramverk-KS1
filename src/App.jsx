@@ -8,6 +8,7 @@ function App() {
   const [listItems, setListItems] = useState([]);
 
   function handleListItem(valueInput) {
+    if (!valueInput) return;
     listItems.push({
       name: valueInput,
       completed: false,
@@ -26,6 +27,11 @@ function App() {
   }
 
   function checkButton(e) {
+    // setListItems(
+    //   [...listItems].map((t) => 
+    //     t.id !== listItems.id ? t : { ...t, completed: !t.completed }
+    //   )
+    // );
     const key = e.currentTarget.value;
     const item = listItems.find((items) => {
       return items.key === key;
