@@ -12,10 +12,13 @@ import axios from "axios";
 function App() {
   const [listItems, setListItems] = useState([]);
 
+  const url = "http://localhost:5000/api/todos";
+
   const getTodos = async () => {
-    const { data } = await axios.get("http://localhost:5000/api/todos");
-    setListItems(data);
-  };
+        const {data} = await axios.get(`${url}`);
+        console.log(data, "getTodos-multi fetched successfully");
+        setListItems(data);
+    }
 
   useEffect(() => {
     getTodos();
@@ -29,7 +32,7 @@ function App() {
       id: uuidv4(),
     });
     setListItems([...listItems]);
-    console.log(listItems);
+    console.log(listItems, " all task items");
   }
 
   function closeButton(e) {
