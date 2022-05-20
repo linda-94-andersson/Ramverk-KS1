@@ -3,30 +3,23 @@ import InputForm from "./components/InputForm";
 import AppenedList from "./components/AppenedList";
 import { v4 as uuidv4 } from "uuid";
 import "./style.css";
-import { getTodos } from "./actions/getTodos";
-import { getTodo } from "./actions/getTodo";
 import { deleteTodo } from "./actions/deleteTodo";
 import { patchTodo } from "./actions/patchTodo";
 import { putTodo } from "./actions/putTodo";
 import { postTodo } from "./actions/postTodo";
-// import { getTodos } from "./actions/actions";
+import axios from "axios";
 
 function App() {
   const [listItems, setListItems] = useState([]);
 
-  getTodos();
+  const getTodos = async () => {
+    const { data } = await axios.get("http://localhost:5000/api/todos");
+    setListItems(data);
+  };
 
-  getTodo();
-  
-  putTodo();
-  
-  postTodo();
-  
-  patchTodo();
-  
-  // useEffect(() => {
-  //   getTodos();
-  // }, []);
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   function handleListItem(valueInput) {
     if (!valueInput) return;

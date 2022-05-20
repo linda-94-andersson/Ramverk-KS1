@@ -7,7 +7,7 @@ function AppenedList(props) {
       <ul>
         {props.itemList.map((item) => {
           return (
-            <li key={item.key} className={item.completed ? "stroken" : ""}>
+            <li key={item.id} className={item.completed ? "stroken" : ""}>
               {item.name}
               <div className="list-div">
                 <button value={item.key} onClick={props.checkedItem}>
