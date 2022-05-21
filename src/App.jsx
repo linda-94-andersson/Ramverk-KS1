@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import InputForm from "./components/InputForm";
 import AppenedList from "./components/AppenedList";
-import { v4 as uuidv4 } from "uuid";
 import "./style.css";
-import { deleteTodo } from "./actions/deleteTodo";
-import { patchTodo } from "./actions/patchTodo";
-import { putTodo } from "./actions/putTodo";
-import { postTodo } from "./actions/postTodo";
-import axios from "axios";
 
 function App() {
   const [listItems, setListItems] = useState([]);
@@ -15,10 +11,23 @@ function App() {
   const url = "http://localhost:5000/api/todos";
 
   const getTodos = async () => {
-        const {data} = await axios.get(`${url}`);
-        console.log(data, "getTodos-multi fetched successfully");
-        setListItems(data);
-    }
+    const { data } = await axios.get(`${url}`);
+    console.log(data, "getTodos-multi fetched successfully");
+    setListItems(data);
+  };
+  
+  const postTodos = async () => {
+    const newTodo = listItems.forEach((item) => {
+      console.log(item.id, item.name, item.completed);
+      return item;
+    });
+  
+    const { data } = await axios.post(`${url}`, 
+    {
+      task: newTodo
+    });
+    console.log(data, "postTodos successfully");
+  };
 
   useEffect(() => {
     getTodos();
@@ -27,12 +36,13 @@ function App() {
   function handleListItem(valueInput) {
     if (!valueInput) return;
     listItems.push({
+      // id: uuidv4(),
       name: valueInput,
       completed: false,
-      id: uuidv4(),
     });
     setListItems([...listItems]);
-    console.log(listItems, " all task items");
+    postTodos();
+    console.log(listItems, " all  listItems");
   }
 
   function closeButton(e) {
@@ -41,7 +51,6 @@ function App() {
       return items.key === key;
     });
     listItems.splice(index, 1);
-    deleteTodo();
     setListItems([...listItems]);
   }
 
