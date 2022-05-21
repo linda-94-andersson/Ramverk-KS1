@@ -15,18 +15,24 @@ function App() {
     console.log(data, "getTodos-multi fetched successfully");
     setListItems(data);
   };
-  
+
+  const todo = listItems.forEach((item) => {
+    // console.log(item.id, item.name, item.completed);
+    return item;
+  });
+
   const postTodos = async () => {
-    const newTodo = listItems.forEach((item) => {
-      console.log(item.id, item.name, item.completed);
-      return item;
-    });
-  
-    const { data } = await axios.post(`${url}`, 
-    {
-      task: newTodo
+    const { data } = await axios.post(`${url}`, {
+      id: listItems[4].id,
+      name: listItems[4].name,
+      completed: listItems[4].completed
     });
     console.log(data, "postTodos successfully");
+  };
+
+  const putTodo = async (id) => {
+    const { data } = await axios.put(`${url}/${id}`);
+    console.log(data, "putTodos successfully");
   };
 
   useEffect(() => {
@@ -36,7 +42,7 @@ function App() {
   function handleListItem(valueInput) {
     if (!valueInput) return;
     listItems.push({
-      // id: uuidv4(),
+      id: uuidv4(),
       name: valueInput,
       completed: false,
     });
@@ -54,18 +60,16 @@ function App() {
     setListItems([...listItems]);
   }
 
-  function checkButton(e) {
-    // setListItems(
-    //   [...listItems].map((t) =>
-    //     t.id !== listItems.id ? t : { ...t, completed: !t.completed }
-    //   )
-    // );
-    const key = e.currentTarget.value;
-    const item = listItems.find((items) => {
-      return items.key === key;
+  function checkButton(id) {
+    const updateItem = listItems.map((item) => {
+      putTodo(item.id);
+      return {...item, completed: true};
+      if (id === item.id) {
+      }
+      return item;
     });
-    item.completed = true;
-    setListItems([...listItems]);
+
+    setListItems(updateItem);
   }
 
   return (
