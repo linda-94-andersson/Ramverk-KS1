@@ -10,10 +10,10 @@ function AppenedList(props) {
             <li key={item.id} className={item.completed ? "stroken" : ""}>
               {item.name}
               <div className="list-div">
-                <button value={item.key} onClick={props.checkedItem}>
+                <button onClick={() => props.checkedItem(item.id)}>
                   <AiOutlineCheckSquare className="checked" />
                 </button>
-                <button value={item.key} onClick={props.removeItem}>
+                <button onClick={() => props.removeItem(item.id)}>
                   <AiOutlineCloseSquare className="close" />
                 </button>
               </div>

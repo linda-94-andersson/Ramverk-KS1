@@ -10,9 +10,8 @@ function InputForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const logValue = inputValue;
+    props.onSubmit(inputValue);
     setInputValue("");
-    props.onSubmit(logValue);
   }
 
   return (
